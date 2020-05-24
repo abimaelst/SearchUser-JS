@@ -1,0 +1,18 @@
+.search__container {
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+.users {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.users div {
+  padding: 3px;
+}
+img {
+  border-radius: 50%;
+}
