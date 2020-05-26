@@ -17,6 +17,10 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/style.css" />
 
     <title>Search for User with Vanilla JS</title>
@@ -28,6 +32,7 @@
         <br /><br />
         <h1 class="header center red-text text-lighten-3">SEARCH USERS</h1>
         <div class="row center">
+          <div id="loading"></div>
           <h5 class="header col s12 light grey-text text-lighten-1">
             search user for the challange Bootcamp fullstack IGTI
           </h5>
@@ -38,9 +43,18 @@
       <div class="row">
         <div class="col s12">
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field row s12">
               <i class="material-icons prefix"><a href="#">search</a></i>
               <input type="text" id="searchInput" class="autocomplete" />
+              <button
+                class="btn waves-effect waves-light"
+                id="submitButton"
+                type="submit"
+                name="action"
+              >
+                Search
+                <i class="material-icons right">send</i>
+              </button>
               <label for="autocomplete-input">search user here</label>
             </div>
           </div>

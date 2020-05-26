@@ -1,8 +1,17 @@
+body {
+  background: #775ada;
+}
 .search__container {
   display: flex;
 }
 .search__container .results__users {
+  background: #002651;
   margin-left: 130px;
+  color: #ff304f;
+}
+.search__container .results__statistics {
+  background: #002651;
+  color: #ff304f;
 }
 .results__users {
   padding: 5px;
@@ -22,6 +31,7 @@
   border-radius: 10px;
   margin-right: 10px;
   width: 40%;
+  height: 20%;
 }
 .results__statistics h3 {
   margin-top: 0px;
@@ -40,4 +50,48 @@
 }
 img {
   border-radius: 50%;
+}
+.btn {
+  float: right;
+  margin-top: 10px;
+  margin-left: 5px;
+  background-color: #002651;
+  color: #775ada;
+}
+.btn i {
+  color: #002651;
+}
+.input-field {
+  display: flex;
+  flex-direction: row;
+}
+#loading h5 {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #002651;
+}
+#tittleStatistics {
+  font-size: 35px;
+  background-color: #775ada;
+  border-radius: 10px;
+  color: #28c7fa;
+  font-family: 'Roboto';
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+#qtdFound {
+  font-size: 35px;
+  font-size: 35px;
+  background-color: #775ada;
+  border-radius: 10px;
+  color: #28c7fa;
+  font-family: 'Roboto';
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+#searchInput {
+  color: #28c7fa;
 }
