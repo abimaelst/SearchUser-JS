@@ -2,15 +2,38 @@ let tabSearchUsersFound = null;
 let searchInput = null;
 let userSearchInput = '';
 
+let qtdFound = null;
+let tittleStatistics = null;
+
+let resultAge = null;
+let resultAgeAverage = null;
+let genderManResult = null;
+let genderWomanResult = null;
+let genderMen = null;
+let genderWomen = null;
+
 let allUsers = [];
 let usersFound = [];
 
-window.addEventListener('load', () => {
+window.onload = () => {
   tabSearchUsersFound = document.querySelector('#tabSearchUsersFound');
   searchInput = document.querySelector('#searchInput');
+  tittleStatistics = document.querySelector('#tittleStatistics');
+
+  qtdFound = document.querySelector('#qtdFound');
+  countResultUsers = document.querySelector('#countResultUsers');
+
+  resultAge = document.querySelector('#resultAge');
+  resultAgeAverage = document.querySelector('#resultAgeAverage');
+  genderManResult = document.querySelector('#genderManResult');
+  genderWomanResult = document.querySelector('#genderWomanResult');
+  genderMen = document.querySelector('#genderMen');
+  genderWomen = document.querySelector('#genderWomen');
+
   fetchUsers();
   resultSearchUsers();
-});
+  resetSearchArray();
+};
 
 const fetchUsers = async () => {
   const res = await fetch(
@@ -53,21 +76,19 @@ const resultSearchUsers = () => {
       render();
     }
     //Limpando Variável da Busca após o resultado
-    usersFound = [];
+    resetSearchArray();
   }
   searchInput.addEventListener('keyup', handleSearch);
 };
 
 const render = () => {
-  renderSearchResult();
+  SearchResult();
+  resultStatistics();
 };
 
-const renderSearchResult = () => {
+const SearchResult = () => {
   let usersHTML = '';
-  if (usersFound.length === 0) {
-    console.log('aqui');
-    usersHTML = '<h2>Nenhum Usuário Encontrado</h2>';
-  } else {
+  if (usersFound.length > 0) {
     usersHTML = '<div>';
 
     usersFound.forEach((user) => {
@@ -91,4 +112,41 @@ const renderSearchResult = () => {
     usersHTML += '</div>';
   }
   tabSearchUsersFound.innerHTML = usersHTML;
+};
+
+const resultStatistics = () => {
+  if (usersFound.length > 0) {
+    const sumAge = usersFound.reduce((acc, curr) => {
+      return acc + curr.dob;
+    }, 0);
+
+    const men = usersFound.filter((user) => {
+      return user.gender === 'male';
+    });
+
+    const women = usersFound.filter((user) => {
+      return user.gender === 'female';
+    });
+
+    let totalResult = usersFound.length;
+
+    tittleStatistics.textContent = 'Estatísticas';
+    genderMen.innerHTML = `Sexo masculino: <span id="genderManResult">${men.length}</span>`;
+    genderWomen.innerHTML = `Sexo Feminino: <span id="genderManResult">${women.length}</span>`;
+    SumAges.innerHTML = `Soma das idades: <span>${sumAge}</span>`;
+    averageAges.innerHTML = `Soma das idades: <span>${sumAge / totalResult}
+    </span>`;
+    qtdFound.innerHTML = `${totalResult} Usuário(s) Encontrado(s)`;
+  } else {
+    tittleStatistics.textContent = 'Nada a ser exibido';
+    genderMen.textContent = '';
+    genderWomen.textContent = '';
+    SumAges.textContent = '';
+    averageAges.textContent = '';
+    qtdFound.textContent = 'Nenhum usuário filtrado';
+  }
+};
+
+const resetSearchArray = () => {
+  usersFound = [];
 };

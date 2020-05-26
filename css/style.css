@@ -1,8 +1,33 @@
 .search__container {
+  display: flex;
+}
+.search__container .results__users {
+  margin-left: 130px;
+}
+.results__users {
   padding: 5px;
   border: 1px solid gray;
   border-radius: 10px;
   margin-right: 10px;
+  width: 40%;
+}
+.results__users h3 {
+  margin-top: 0px;
+  text-align: left;
+}
+.results__statistics {
+  padding: 5px;
+  margin-top: 0px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-right: 10px;
+  width: 40%;
+}
+.results__statistics h3 {
+  margin-top: 0px;
+}
+.results__statistics span {
+  font-weight: bold;
 }
 .users {
   display: flex;
